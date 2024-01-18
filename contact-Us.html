@@ -32,6 +32,80 @@
  
 </head>
 <body class="slides horizontal simplifiedMobile animated">
+
+	<section class="slide fade-6 kenBurns" id="section2">
+		<div class="content">
+		  <div class="container">
+			<div class="wrap">
+			
+			  <div class="fix-6-12">
+
+				<h2 class="huge ae-1 margin-bottom-2">Contact Creamy App</h2>
+	  <p class="hero ae-2 margin-bottom-3"><span class="opacity-8">Direct email for quick response Mailto:Support@creamyapp.com </span></p>
+
+				<form id="contactForm" action="#" autocomplete="off" class="slides-form margin-bottom-3">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="body">Message:</label>
+        <textarea id="message" name="body" rows="6" required></textarea>
+ <!-- Display error message here -->
+<div>
+	<button type="button" type="submit" class="button blue gradient ae-4" onclick="validateAndSubmit()">Submit</button>
+	<p id="error" class="error"></p>
+</div>
+
+    </form>
+
+	<script>
+        function validateAndSubmit() {
+            // Get form values
+            var email = document.getElementById('email').value.trim();
+            var subject = document.getElementById('subject').value.trim();
+            var message = document.getElementById('message').value.trim();
+
+            // Simple validation
+            if (email === '' || subject === '' || message === '') {
+                document.getElementById('error').textContent = 'All fields are required';
+            } else {
+                // Send the form data to the server
+                fetch('process_form.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `email=${name}&subject=${email}&message=${message}`,
+                })
+                .then(response => response.text())
+                .then(message => {
+                    alert(message); // You can handle the response as needed
+                    
+                    // Clear form fields
+                    document.getElementById('email').value = '';
+                    document.getElementById('subject').value = '';
+                    document.getElementById('message').value = '';
+                    
+                    // Clear error message
+                    document.getElementById('error').textContent = '';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        }
+    </script>
+	  
+			
+			  </div>
+					  
+			</div>
+		  </div>
+		</div>
+		<div class="background" style="background-image:url(assets/img/background/contact.jpeg)"></div>
+	  </section>
 		
 		
 </body>
