@@ -5668,23 +5668,23 @@ body {
 }
 
 .social-instagram {
-  background: #e4405f !important;
-  color: #fff !important;
+  background: #fff !important;
+  color: #0f0808 !important;
 }
 .social-instagram svg {
-  fill: #fff !important;
+  fill: #0f0808 !important;
 }
 
 .text-social-instagram {
-  color: #e4405f !important;
+  color: #0f0808 !important;
 }
 .text-social-instagram.button svg {
-  fill: #e4405f !important;
+  fill: #0f0808 !important;
 }
 
 .stroke.button.social-instagram {
-  color: #e4405f !important;
-  border-color: #e4405f !important;
+  color: #0f0808 !important;
+  border-color: #210d10 !important;
 }
 .stroke.button.social-instagram svg {
   fill: #e4405f !important;
