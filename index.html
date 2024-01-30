@@ -374,15 +374,50 @@
     <a href="contact-Us.html">Contact us</a>
   </div>
   <ul>
-    <li class="social-facebook"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></li>
-    <li class="social-twitter"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></li>
-    <li class="social-instagram"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></li>
-    <li class="social-linkedin" ><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linkedin"></use></svg></li>
+
+    <a href="https://www.facebook.com/CreamyApps" onclick="openSocialMediaWindow('https://www.facebook.com/CreamyApps', 'facebookWindow', 900, 500); return false;">
+      <li class="social-facebook">
+        <svg>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use>
+        </svg>
+      </li>
+    </a>
+
+
+    <a href="https://twitter.com/Creamy_App" onclick="openSocialMediaWindow('https://twitter.com/Creamy_App', 'twitterWindow', 900, 500); return false;">
+      <li class="social-twitter">
+        <svg>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use>
+        </svg>
+      </li>
+    </a>
+   
+    <a href="https://www.instagram.com/creamy_app/" onclick="openSocialMediaWindow('https://www.instagram.com/creamy_app/', 'instagramWindow', 900, 500); return false;">
+      <li class="social-instagram">
+        <svg>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use>
+        </svg>
+      </li>
+    </a>
+
+
+    <a href="https://www.linkedin.com/company/creamy-app" onclick="openSocialMediaWindow('https://www.linkedin.com/company/creamy-app', 'linkedinWindow', 900, 500); return false;">
+      <li class="social-linkedin">
+        <svg>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linkedin"></use>
+        </svg>
+      </li>
+    </a>
+
     <li class="mail" data-subject="Subject" data-body="Body">share by email</li>
   </ul>
 </div>
 
-
+<script>
+  function openSocialMediaWindow(url, windowName, width, height) {
+    window.open(url, windowName, `width=${width}, height=${height}`);
+  }
+</script>
 
 <!-- Loading Progress Bar -->
 <div class="progress-bar blue"></div>
