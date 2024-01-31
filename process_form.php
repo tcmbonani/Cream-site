@@ -1,43 +1,33 @@
 <?php
+header('Content-Type: application/json');
 
-/* SETTINGS */
-$recipient = "your.tcmbonani@gmail.com";
-$subject = "New Message from Contact Form";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
 
-if($_POST){
+    // Simple validation
+    if (empty($email) || empty($subject) || empty($message)) {
+        http_response_code(400); // Bad Request
+        echo json_encode(array('error' => 'All fields are required.'));
+        exit;
+    }
 
-  /* DATA FROM HTML FORM */
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $message = $_POST['message'];
-//$phone = $_POST['phone'];
+    // Configure your email settings
+    $to = "tcmbonani@gmail.com";  // Replace with your actual email address
+    $headers = "From: $email";
 
-
-  /* SUBJECT */
-  $emailSubject = $subject . " by " . $name;
-
-  /* HEADERS */
-  $headers = "From: $name <$email>\r\n" .
-             "Reply-To: $name <$email>\r\n" . 
-             "Subject: $emailSubject\r\n" .
-             "Content-type: text/plain; charset=UTF-8\r\n" .
-             "MIME-Version: 1.0\r\n" . 
-             "X-Mailer: PHP/" . phpversion() . "\r\n";
- 
-  /* PREVENT EMAIL INJECTION */
-  if ( preg_match("/[\r\n]/", $name) || preg_match("/[\r\n]/", $email) ) {
-    header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
-    die("500 Internal Server Error");
-  }
-
-  /* MESSAGE TEMPLATE */
-  $mailBody = "Name: $name \n\r" .
-              "Email:  $email \n\r" .
-              "Subject:  $subject \n\r" .
-//            "Phone:  $phone \n\r" .
-              "Message: $message";
-
-  /* SEND EMAIL */
-  mail($recipient, $emailSubject, $mailBody, $headers);
+    // Send email
+    if (mail($to, $subject, $message, $headers)) {
+        http_response_code(200); // OK
+        echo json_encode(array('message' => 'Email sent successfully!'));
+    } else {
+        http_response_code(500); // Internal Server Error
+        echo json_encode(array('error' => 'Error sending email.'));
+    }
+} else {
+    http_response_code(400); // Bad Request
+    echo json_encode(array('error' => 'Invalid request.'));
 }
 ?>
