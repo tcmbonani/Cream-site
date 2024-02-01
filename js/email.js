@@ -1,10 +1,17 @@
-function sendMail(){
-    let parms = {
-        email : document.getElementById("email").value,
-        subject : document.getElementById("subject").value,
-        message : document.getElementById("message").value,
-    }
 
-    emailjs.send("service_oo26orp","template_2y41jk8",parms).then(alert("Email Sent!!"))
-}
+// https://github.com/github/fetch
+fetch("https://formsubmit.co/f00f82cc40d840aad602d4354cd354fb", {
+    method: "POST",
+    headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+        name: "FormSubmit",
+        message: "I'm from Devro LABS"
+    })
+})
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
 
